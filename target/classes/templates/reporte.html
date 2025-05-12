@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reporte de Choferes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; text-align: center; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; border: 1px solid #ccc; text-align: center; }
+        .summary { margin-top: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .highlight { font-weight: bold; color: green; }
+    </style>
+</head>
+<body>
+
+<h1>Reporte de Choferes</h1>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Total Horas a la Semana</th>
+        <th>Sueldo Semanal</th>
+    </tr>
+    <tr th:each="chofer : ${choferes}">
+        <td th:text="${chofer.nombre}"></td>
+        <td th:text="${chofer.totalHoras}"></td>
+        <td th:text="${chofer.sueldoSemanal}"></td>
+    </tr>
+</table>
+
+<div class="summary">
+    <p><strong>Total a Pagar por la Empresa:</strong> $<span th:text="${totalEmpresa}"></span></p>
+    <p><strong>Chofer con más horas el Lunes:</strong> <span class="highlight" th:text="${choferMaxLunes}"></span></p>
+</div>
+
+
+</body>
+</html>
